@@ -1,12 +1,7 @@
-packages:
-  yaml/
-
-
--- yaml streaming
-packages:
-  yaml-streaming/
-  yaml-machines/
-  yaml-lens/
+packages: yaml-lib
+packages: yaml-streaming
+packages: yaml-machines
+packages: yaml-lens
 
 tests: True
 optimization: False

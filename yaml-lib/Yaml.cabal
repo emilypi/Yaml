@@ -54,7 +54,7 @@ library
 
 
 
-test-suite tasty
+test-suite Yaml-test
   default-language:    Haskell2010
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
