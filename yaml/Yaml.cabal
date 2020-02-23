@@ -1,0 +1,62 @@
+cabal-version:       2.0
+
+name:                Yaml
+version:             0.1.0.0
+synopsis:            Yaml 1.2
+description:
+homepage:            https://github.com/emilypi/Yaml
+bug-reports:         https://github.com/emilypi/Yaml/issues
+license:             BSD3
+license-file:        LICENSE
+author:              Emily Pillmore
+maintainer:          emilypi@cohomolo.gy
+copyright:           (c) 2020 Emily Pillmore
+category:            Data
+build-type:          Simple
+extra-source-files:
+  CHANGELOG.md
+  README.md
+
+
+tested-with:        GHC ==8.8.2 || ==8.8.1 || ==8.6.5 || ==8.6.3 || ==8.4.4 || ==8.4.3 || ==8.2.2 || ==8.0.2
+
+source-repository head
+  type:     git
+  location: https://github.com/emilypi/Yaml.git
+
+flag perf-flags
+  description: Performance tuning flags and information
+  manual: True
+  default: False
+
+flag ghc-flags
+  description: Gather GHC flags for hsinspect
+  manual: True
+  default: False
+
+
+library
+  exposed-modules:
+  -- other-modules:
+  -- other-extensions:
+  build-depends:       base ^>=4.12.0.0
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+  if flag(perf-flags)
+    ghc-options:       -ddump-simpl
+                       -ddump-to-file
+
+  if flag(ghc-flags)
+    build-tool-depends: hsinspect:hsinspect
+    build-depends: ghcflags
+    ghc-options: -fplugin GhcFlags.Plugin
+
+
+
+test-suite tasty
+  default-language:    Haskell2010
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             YamlTests.hs
+  build-depends:       base ^>=4.12.0.0

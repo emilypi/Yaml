@@ -1,0 +1,16 @@
+packages:
+  yaml/
+
+
+-- yaml streaming
+packages:
+  yaml-streaming/
+  yaml-machines/
+  yaml-lens/
+
+tests: True
+optimization: False
+flags: +ghc-flags +perf-flags
+
+-- :^)
+write-ghc-environment-files: always
