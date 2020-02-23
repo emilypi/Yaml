@@ -1,1 +1,3 @@
-# Yaml - lib-yaml 1.2
+# Yaml - A Modern Yaml library
+
+
